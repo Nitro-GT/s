@@ -1,0 +1,154 @@
+local function WaitForChildOfClass(parent, class)
+	local child = parent:FindFirstChildOfClass(class)
+	while not child or child.ClassName ~= class do
+		child = parent.ChildAdded:Wait()
+	end
+	return child
+end
+ oldstud = function(v)
+if v:FindFirstChild("StudPart") then
+ v:FindFirstChild("StudPart"):Destroy()
+ end
+ if  v.Name ~= "StudPart" then
+local p = v:Clone()
+p.Name = "StudPart"
+p.CanCollide = false
+p.Massless = true
+p.CFrame = p.CFrame * CFrame.new(0,0.05,0)
+p.Parent = v
+local w = Instance.new("Weld",p)
+w.Part0 = v
+w.Part1 = p
+p.Transparency = 1
+if p:FindFirstChildOfClass("SurfaceGui") then
+p:FindFirstChildOfClass("SurfaceGui"):Destroy()
+end
+if p:FindFirstChild("StudPart") then
+ p:FindFirstChild("StudPart"):Destroy()
+ end
+if p:FindFirstChildOfClass("Texture") then
+for i,v in pairs(p:GetDescendants()) do
+if v:IsA("Texture") then
+v:Destroy()
+end
+end
+end
+if p:FindFirstChildOfClass("SpecialMesh") then
+p:FindFirstChildOfClass("SpecialMesh"):Destroy()
+end
+p.Material = Enum.Material.SmoothPlastic
+t = Instance.new("Texture")
+t.Parent = p
+t.StudsPerTileU = 2
+t.StudsPerTileV = 4
+t.Transparency = .3
+t.Texture = "http://www.roblox.com/asset/?id=162248765"
+t.Face = "Top"
+t.Name = "TopStud"
+tb = Instance.new("Texture")
+tb.Parent = p
+tb.Texture = "http://www.roblox.com/asset/?id=1068388840"
+tb.Face = "Bottom"
+tb.Name = "BottomStud"
+tb.Transparency = .3
+p.TopSurface = "Smooth"
+p.BottomSurface = "Smooth"
+tb.StudsPerTileU = 2
+tb.StudsPerTileV = 4
+end
+end
+
+p = workspace:GetDescendants()
+for i = 1,#p do
+if p[i]:IsA("Part") and not p[i].Name == "Handle" and not game.Players:FindFirstChild(p[i].Parent.Name) then
+if p[i].Transparency < 1 then
+oldstud(p[i])
+end
+end
+if p[i].className == "Model" then
+c = p[i]:GetChildren()
+for m = 1,#c do
+if c[m].className == "Part"  and not game.Players:FindFirstChild(c[m].Parent.Name) then
+if c[m]:FindFirstChildOfClass("Texture") then
+for i,v in pairs(c[m]:GetDescendants()) do
+if v:IsA("Texture") then
+v:Destroy()
+end
+end
+end
+if c[m].Transparency < 1 then
+c[m].Material = Enum.Material.SmoothPlastic
+oldstud(c[m])
+end
+end
+end
+end
+end
+
+workspace.DescendantAdded:Connect(function(d)
+if d.className == "Part" and d.Parent.className ~= "Tool" and d.Name ~= "ExplosionPart" and d.Parent.ClassName ~= "Accessory" and d.Parent ~= game.Players.LocalPlayer.Character then
+if d.Transparency < 1 then
+oldstud(d)
+end
+end
+end)
+
+for i,v in pairs(workspace:GetDescendants()) do
+	if v:IsA("Part") then
+		if v.Parent.ClassName ~= "Accessory"  and v.Name ~= "StudPart" and v.Shape == Enum.PartType.Block then
+			if v.Parent.ClassName ~= "Tool" then
+	if not game.Players:FindFirstChild(v.Parent.Name) then
+scale=.505
+scale2=1.0
+b = v
+if v:FindFirstChildOfClass("SpecialMesh") then
+v:FindFirstChildOfClass("SpecialMesh"):Destroy()
+end
+Instance.new("SpecialMesh",v)
+pcall(function ()
+v:FindFirstChildOfClass("SpecialMesh").MeshId = "rbxasset://fonts/torso.mesh"
+end)
+if v:FindFirstChildOfClass("Decal") then
+					q = v:FindFirstChildOfClass("Decal")
+				q:Destroy()
+end 				
+b.Mesh.Scale = Vector3.new(b.Size.x*scale,b.Size.y*0.5,b.Size.z*scale2)
+b:GetPropertyChangedSignal("Size"):Connect(function()
+WaitForChildOfClass(b,"SpecialMesh").Scale = Vector3.new(b.Size.x*scale,b.Size.y*0.5,b.Size.z*scale2)
+end)
+		end
+		end
+	end
+	end
+end
+
+workspace.DescendantAdded:Connect(function(v)
+	if v:IsA("Part") then
+		if v.Parent.ClassName ~= "Accessory"  and v.Name ~= "ExpLight" and v.Name ~= "StudPart"  and v.Shape == Enum.PartType.Block then
+			if v.Parent.ClassName ~= "Tool" then
+	if not game.Players:FindFirstChild(v.Parent.Name) then
+scale=.505
+scale2=1.0
+b = v
+if v:FindFirstChildOfClass("SpecialMesh") then
+v:FindFirstChildOfClass("SpecialMesh"):Destroy()
+end
+Instance.new("SpecialMesh",v)
+pcall(function ()
+v:FindFirstChildOfClass("SpecialMesh").MeshId = "rbxasset://fonts/torso.mesh"
+end)
+if v:FindFirstChildOfClass("Decal") then
+					q = v:FindFirstChildOfClass("Decal")
+				q:Destroy()
+end 				
+b.Mesh.Scale = Vector3.new(b.Size.x*scale,b.Size.y*0.5,b.Size.z*scale2)
+pcall(function()
+b:GetPropertyChangedSignal("Size"):Connect(function()
+b.Mesh.Scale = Vector3.new(b.Size.x*scale,b.Size.y*0.5,b.Size.z*scale2)
+end)
+end)
+		end
+		end
+	end
+	end
+	end)
