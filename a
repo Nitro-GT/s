@@ -10195,9 +10195,9 @@ local Figure = game.Players.LocalPlayer.Character
 					{ id = "http://www.roblox.com/asset/?id=507776879", weight = 10 } 
 				},
 		dance3 = {
-					{ id = "http://www.roblox.com/asset/?id=507777268", weight = 10 }, 
-					{ id = "http://www.roblox.com/asset/?id=507777451", weight = 10 }, 
-					{ id = "http://www.roblox.com/asset/?id=507777623", weight = 10 } 
+					{ id = "http://www.roblox.com/asset/?id=15517864808", weight = 10 }, 
+					{ id = "http://www.roblox.com/asset/?id=15517864808", weight = 10 }, 
+					{ id = "http://www.roblox.com/asset/?id=15517864808", weight = 10 } 
 				},
 		laugh = {
 					{ id = "http://www.roblox.com/asset/?id=507770818", weight = 10 } 
